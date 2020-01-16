@@ -13,5 +13,5 @@ public interface ConsumerService{
      * @param consumer {@link Consumer}
      * @return
      */
-    boolean findConsumerWithUsernamePassword(Consumer consumer);
+    Consumer findConsumerWithUsernamePassword(Consumer consumer);
 }

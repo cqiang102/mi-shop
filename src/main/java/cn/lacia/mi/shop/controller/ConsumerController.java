@@ -2,12 +2,12 @@ package cn.lacia.mi.shop.controller;
 
 import cn.lacia.mi.shop.domain.Consumer;
 import cn.lacia.mi.shop.service.ConsumerService;
+import cn.lacia.mi.shop.utils.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author 你是电脑
  * @create 2020/1/16 - 18:24
  */
-@Controller
+@RestController
 @RequestMapping("consumer")
 @Slf4j
 public class ConsumerController {
@@ -24,14 +24,14 @@ public class ConsumerController {
     private ConsumerService consumerService;
 
     @PostMapping("login/auth")
-    public String login(@RequestParam String username,
+    public Result login(@RequestParam String username,
                         @RequestParam String password){
         log.info("login >> username -> {} : password -> {}",username,password);
-        boolean result = consumerService.findConsumerWithUsernamePassword
+        Consumer result = consumerService.findConsumerWithUsernamePassword
                 (Consumer.builder()
                 .username(username)
                 .password(password).build());
         log.info("login >> result -> {}",result);
-        return result ? "success" : "error";
+        return result == null ? Result.notOk("登录失败") : Result.ok("登录成功",result);
     }
 }

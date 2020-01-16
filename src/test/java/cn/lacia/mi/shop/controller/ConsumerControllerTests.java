@@ -1,19 +1,18 @@
 package cn.lacia.mi.shop.controller;
 
+import cn.lacia.mi.shop.utils.MapperUtils;
+import cn.lacia.mi.shop.utils.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.util.Assert;
+
+import java.nio.charset.Charset;
 
 /**
  * @author 你是电脑
@@ -26,25 +25,17 @@ public class ConsumerControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
-//    @Autowired
-//    private WebApplicationContext webApplicationContext;
-//    @BeforeAll
-//    public void initMockMvc(){
-//        log.debug("mockMvc");
-//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-//    }
 
     @Test
-    public void testLogin(){
-        try {
+    public void testLogin() throws Exception {
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
                     .post("/consumer/login/auth")
                     .param("username", "damu")
                     .param("password", "123456"))
                     .andReturn();
-            log.info("{}",mvcResult.getResponse().getContentAsString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String res = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+        log.info("{}",res);
+        Result result = MapperUtils.json2pojo(res, Result.class);
+        Assert.isTrue(result!=null && Result.SUCCESS_CODE==result.getStatus(),"登录接口测试不通过");
     }
 }

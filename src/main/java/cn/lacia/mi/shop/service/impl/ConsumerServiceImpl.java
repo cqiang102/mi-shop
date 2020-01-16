@@ -20,19 +20,19 @@ public class ConsumerServiceImpl implements ConsumerService{
     private ConsumerMapper consumerMapper;
 
     @Override
-    public boolean findConsumerWithUsernamePassword(Consumer consumer) {
+    public Consumer findConsumerWithUsernamePassword(Consumer consumer) {
         Example example = new Example(Consumer.class);
         example.createCriteria()
                 .andEqualTo("username",consumer.getUsername());
         Consumer resultConsumer = consumerMapper.selectOneByExample(example);
         // 用户名为空
         if (resultConsumer == null) {
-            return false;
+            return null;
         }
         // 密码错误
         if ( ! Objects.equals(resultConsumer.getPassword(),consumer.getPassword())){
-            return false;
+            return null;
         }
-        return true;
+        return resultConsumer;
     }
 }

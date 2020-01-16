@@ -1,7 +1,5 @@
-package cn.lacia.mi.shop.maooer;
+package cn.lacia.mi.shop.mapper;
 
-import cn.lacia.mi.shop.mapper.ConsumerMapper;
-import cn.lacia.mi.shop.mapper.GoodsMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
