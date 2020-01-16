@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lacia.mi.shop.mapper.GoodsShippingAddressMapper">
+  <resultMap id="BaseResultMap" type="cn.lacia.mi.shop.domain.GoodsShippingAddress">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:54 CST 2020.-->
+    <!--@Table xiaomi.goods_shipping_address-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="street" jdbcType="VARCHAR" property="street" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+    <result column="consumer_id" jdbcType="INTEGER" property="consumerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:54 CST 2020.-->
+    id, `name`, phone, email, province, city, country, street, remark, consumer_id
+  </sql>
+</mapper>

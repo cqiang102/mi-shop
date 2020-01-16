@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lacia.mi.shop.mapper.GoodsCartMapper">
+  <resultMap id="BaseResultMap" type="cn.lacia.mi.shop.domain.GoodsCart">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:09 CST 2020.-->
+    <!--@Table xiaomi.goods_cart-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="buy_count" jdbcType="INTEGER" property="buyCount" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="subtotal" jdbcType="DOUBLE" property="subtotal" />
+    <result column="consumer_id" jdbcType="INTEGER" property="consumerId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:09 CST 2020.-->
+    id, goods_id, buy_count, add_date, subtotal, consumer_id
+  </sql>
+</mapper>

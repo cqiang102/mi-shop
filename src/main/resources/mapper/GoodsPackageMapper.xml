@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lacia.mi.shop.mapper.GoodsPackageMapper">
+  <resultMap id="BaseResultMap" type="cn.lacia.mi.shop.domain.GoodsPackage">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:43 CST 2020.-->
+    <!--@Table xiaomi.goods_package-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="info" jdbcType="VARCHAR" property="info" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:43 CST 2020.-->
+    id, info, goods_id
+  </sql>
+</mapper>

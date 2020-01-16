@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lacia.mi.shop.mapper.GoodsOrderMapper">
+  <resultMap id="BaseResultMap" type="cn.lacia.mi.shop.domain.GoodsOrder">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:30 CST 2020.-->
+    <!--@Table xiaomi.goods_order-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+    <result column="consumer_id" jdbcType="INTEGER" property="consumerId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="goods_shipping_address_id" jdbcType="INTEGER" property="goodsShippingAddressId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Jan 16 17:37:30 CST 2020.-->
+    id, order_date, consumer_id, `status`, goods_shipping_address_id
+  </sql>
+</mapper>
