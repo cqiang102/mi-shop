@@ -7,6 +7,7 @@ import cn.lacia.mi.shop.mapper.ConsumerMapper;
 import cn.lacia.mi.shop.service.ConsumerService;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,10 +22,9 @@ public class ConsumerServiceImpl implements ConsumerService{
 
     @Override
     public Consumer findConsumerWithUsernamePassword(Consumer consumer) {
-        Example example = new Example(Consumer.class);
-        example.createCriteria()
-                .andEqualTo("username",consumer.getUsername());
-        Consumer resultConsumer = consumerMapper.selectOneByExample(example);
+        Consumer resultConsumer = consumerMapper.selectOne(Consumer.builder()
+                .username(consumer.getUsername())
+                .password(consumer.getPassword()).build());
         // 用户名为空
         if (resultConsumer == null) {
             return null;
@@ -34,5 +34,20 @@ public class ConsumerServiceImpl implements ConsumerService{
             return null;
         }
         return resultConsumer;
+    }
+
+    @Override
+    public Consumer register(Consumer consumer) {
+        List<Consumer> consumers = consumerMapper
+                .select(Consumer.builder()
+                .username(consumer.getUsername())
+                .password(consumer.getPassword()).build());
+        if ( consumers != null && ! consumers.isEmpty() ) {
+            return null;
+        }
+        else if (consumerMapper.insertSelective(consumer) <= 0){
+            return null;
+        }
+        return consumer;
     }
 }

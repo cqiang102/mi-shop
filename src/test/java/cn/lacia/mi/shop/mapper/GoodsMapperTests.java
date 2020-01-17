@@ -17,4 +17,8 @@ public class GoodsMapperTests {
     void testSelectAll() {
         goodsMapper.selectAll().forEach(System.out::println);
     }
+    @Test
+    void testSelectGoodsJoinImages() {
+        goodsMapper.selectGoodsJoinImages(1).forEach(System.out::println);
+    }
 }

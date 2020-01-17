@@ -10,9 +10,26 @@
     <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="goods_type_id" jdbcType="INTEGER" property="goodsTypeId" />
     <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
-  </resultMap>
+</resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapJoinImages" type="cn.lacia.mi.shop.domain.Goods">
+        <collection property="goodsImages" ofType="cn.lacia.mi.shop.domain.GoodsImages" >
+            <id column="giid" jdbcType="INTEGER" property="id" />
+            <result column="path" jdbcType="VARCHAR" property="path" />
+            <result column="title" jdbcType="VARCHAR" property="title" />
+            <result column="alt" jdbcType="VARCHAR" property="alt" />
+        </collection>
+    </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated generated on Thu Jan 16 17:37:03 CST 2020.-->
     id, `name`, price, stock, goods_type_id, remark
   </sql>
+    <select id="selectGoodsJoinImages" resultMap="ResultMapJoinImages">
+        SELECT
+        	g.*,gi.id AS giid,gi.path,gi.title,gi.alt
+        FROM
+        	goods AS g
+        LEFT JOIN goods_images AS gi ON g.id = gi.goods_id
+        WHERE
+        	g.id = #{id}
+    </select>
 </mapper>

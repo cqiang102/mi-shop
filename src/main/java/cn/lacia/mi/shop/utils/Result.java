@@ -32,6 +32,9 @@ public class Result {
     public static Result ok(Integer status){
         return  ok(status,SUCCESS_MESSAGE);
     }
+    public static Result ok(Object data){
+        return  ok(SUCCESS_CODE,data);
+    }
     public static Result ok(Integer status,Object data){
         return  Result.builder().status(status).message(SUCCESS_MESSAGE).data(data).build();
     }

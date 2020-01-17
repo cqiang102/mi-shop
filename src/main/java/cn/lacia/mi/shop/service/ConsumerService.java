@@ -11,7 +11,14 @@ public interface ConsumerService{
     /**
      * 根据账号密码查询消费者
      * @param consumer {@link Consumer}
-     * @return
+     * @return 登录成功的用户信息 {@link Consumer}
      */
     Consumer findConsumerWithUsernamePassword(Consumer consumer);
+
+    /**
+     * 用户注册
+     * @param consumer  {@link Consumer}
+     * @return 注册成功的用户信息  {@link Consumer}
+     */
+    Consumer register(Consumer consumer);
 }

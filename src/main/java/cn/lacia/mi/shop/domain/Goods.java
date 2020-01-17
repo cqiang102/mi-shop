@@ -1,6 +1,7 @@
 package cn.lacia.mi.shop.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -54,6 +55,8 @@ public class Goods implements Serializable {
      */
     @Column(name = "remark")
     private String remark;
+
+    private List<GoodsImages> goodsImages;
 
     private static final long serialVersionUID = 1L;
 }

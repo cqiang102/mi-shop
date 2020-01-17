@@ -29,9 +29,17 @@ public class ConsumerController {
         log.info("login >> username -> {} : password -> {}",username,password);
         Consumer result = consumerService.findConsumerWithUsernamePassword
                 (Consumer.builder()
-                .username(username)
-                .password(password).build());
+                        .username(username)
+                        .password(password).build());
         log.info("login >> result -> {}",result);
         return result == null ? Result.notOk("登录失败") : Result.ok("登录成功",result);
+    }
+    @PostMapping("register")
+    public Result register(@RequestParam String username,
+                        @RequestParam String password){
+        log.info("register >> username -> {} : password -> {}",username,password);
+        Consumer result = consumerService.register(Consumer.builder().username(username).password(password).build());
+        log.info("register >> result -> {}",result);
+        return result == null ? Result.notOk("注册失败") : Result.ok("注册成功",result);
     }
 }
