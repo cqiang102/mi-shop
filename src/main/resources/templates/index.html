@@ -659,13 +659,16 @@
     $(function() {
        // 直接发送请求获取数据
        $.ajax({
-           // TODO 改 URL
-           url: "/xiaomi/initIndex",
+           url: "/initIndex",
            method: "GET",
            success: function(response) {
+               if (! (response.status === 200)){
+                   console.log(response.message);
+                   return
+               }
                console.log(response);
                // 获取到后台返回的一级商品类型数据
-               let $goodsTypes = response.objectMap.goodsTypeList;
+               let $goodsTypes = response.data.topLevel;
                // 遍历商品类型
                for(let i = 0; i < $goodsTypes.length; i++) {
                    // 创建对应的标签
@@ -677,16 +680,16 @@
                }
                // 加载楼层商品
                // 获取小米手机商品
-               let $xiaomiphonelist = response.objectMap.goodsMap["10001"];
+               let $xiaomiphonelist = response.data.goodsMap["10001"];
                loadGoods($xiaomiphonelist, $("#xiaomiphone"));
                // 获取红米手机商品
-               let $hongmiphonelist = response.objectMap.goodsMap["10002"];
+               let $hongmiphonelist = response.data.goodsMap["10002"];
                loadGoods($hongmiphonelist, $("#hongmiphone"));
                // 获取游戏手机商品
-               let $gamephonelist = response.objectMap.goodsMap["10003"];
+               let $gamephonelist = response.data.goodsMap["10003"];
                loadGoods($gamephonelist, $("#gamephone"));
                // 获取电视商品
-               let $tvlist = response.objectMap.goodsMap["20002"];
+               let $tvlist = response.data.goodsMap["20002"];
                loadGoods($tvlist, $("#tv"));
 
            },
@@ -699,7 +702,8 @@
            // 遍历商品列表，将商品添加到页面汇总
            for(let i = 0; i < goodslist.length; i++) {
                let $boxitem = $("<div>").addClass("goodsboxitem");
-               let $a = $("<a>").attr("href", "/xiaomi/detail.jsp?gid=" + goodslist[i].id);
+               //TODO  修改 URL
+               let $a = $("<a>").attr("href", "/detail?gid=" + goodslist[i].id);
                let $content = $("<div>").addClass("content");
 
                let $thumb = $("<div>").addClass("thumb");
@@ -726,7 +730,8 @@
             let $word = $("#search input").val();
             console.log($word);
             // 跳转页面
-            window.location = "/xiaomi/goodslist.jsp?wd=" + $word;
+            //TODO 改
+            window.location = "/goodslist?wd=" + $word;
             // 按钮存在在表单中的，所以点击按钮的时候需要组织浏览器默认行为
             window.event.returnValue = false;
         });
@@ -739,7 +744,8 @@
            // 获取商品类型编号
            let $goodsTypeId = $(this).prop("id");
            // 页面跳转
-           window.location = "/xiaomi/goodslist2.jsp?level=1&goodsTypeId="+$goodsTypeId;
+           // TODO 改
+           window.location = "/goodslist2?level=1&goodsTypeId="+$goodsTypeId;
 
            /*// 发送ajax请求
            $.ajax({

@@ -37,5 +37,13 @@ public class IndexControllerTests {
         Result result = MapperUtils.json2pojo(res, Result.class);
         Assert.isTrue(result!=null && Result.SUCCESS_CODE==result.getStatus(),"首页初始化接口测试不通过");
     }
-
+    @Test
+    public void testSearch() throws Exception {
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+                .get("/search/小米")).andReturn();
+        String res = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+        log.info("{}",res);
+        Result result = MapperUtils.json2pojo(res, Result.class);
+        Assert.isTrue(result!=null && Result.SUCCESS_CODE==result.getStatus(),"搜索接口测试不通过");
+    }
 }

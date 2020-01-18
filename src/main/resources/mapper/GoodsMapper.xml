@@ -30,6 +30,24 @@
         	goods AS g
         LEFT JOIN goods_images AS gi ON g.id = gi.goods_id
         WHERE
-        	g.id = #{id}
+        	g.goods_type_id = #{id}
+    </select>
+    <select id="selectOneGoodsJoinImages" resultMap="ResultMapJoinImages">
+        SELECT
+        g.*,gi.id AS giid,gi.path,gi.title,gi.alt
+        FROM
+        goods AS g
+        LEFT JOIN goods_images AS gi ON g.id = gi.goods_id
+        WHERE
+        g.id = #{id}
+    </select>
+    <select id="selectGoodsJoinImagesLikeName" resultMap="ResultMapJoinImages">
+        SELECT
+        g.*,gi.id AS giid,gi.path,gi.title,gi.alt
+        FROM
+        goods AS g
+        LEFT JOIN goods_images AS gi ON g.id = gi.goods_id
+        WHERE
+        g.name LIKE #{name}
     </select>
 </mapper>

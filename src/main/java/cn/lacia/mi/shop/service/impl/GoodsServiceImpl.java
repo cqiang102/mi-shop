@@ -22,6 +22,16 @@ public class GoodsServiceImpl implements GoodsService{
 
     @Override
     public List<Goods> findGoodsWithType(GoodsType type) {
-        return goodsMapper.select(Goods.builder().goodsTypeId(type.getId()).build());
+        return goodsMapper.selectGoodsJoinImages(type.getId());
+    }
+
+    @Override
+    public Goods selectOneGoodsByGid(Integer gid) {
+        return goodsMapper.selectOneGoodsJoinImages(gid);
+    }
+
+    @Override
+    public List<Goods> findGoodsWithName(String name) {
+        return goodsMapper.selectGoodsJoinImagesLikeName("%"+name+"%");
     }
 }

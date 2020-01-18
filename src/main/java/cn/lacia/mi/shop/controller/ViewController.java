@@ -22,4 +22,20 @@ public class ViewController {
     public String register(){
         return "register";
     }
+    @GetMapping(value = {"detail","detail.html"})
+    public String detail(){
+        return "detail";
+    }
+    @GetMapping(value = {"shopcart","shopcart.html"})
+    public String shopcart(){
+        return "shopcart";
+    }
+    @GetMapping(value = {"goodslist","goodslist.html"})
+    public String goodslist(){
+        return "goodslist";
+    }
+    @GetMapping(value = {"goodslist2","goodslist2.html"})
+    public String goodslist2(){
+        return "goodslist2";
+    }
 }

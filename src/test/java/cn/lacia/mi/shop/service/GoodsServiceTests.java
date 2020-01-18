@@ -1,5 +1,6 @@
-package cn.lacia.mi.shop.mapper;
+package cn.lacia.mi.shop.service;
 
+import cn.lacia.mi.shop.domain.GoodsType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @Slf4j
 @Transactional
-public class GoodsMapperTests {
+public class GoodsServiceTests {
 
     @Autowired
-    private GoodsMapper goodsMapper;
+    private GoodsService goodsService;
     @Test
-    void testSelectAll() {
-        goodsMapper.selectAll().forEach(goods -> log.info("{}",goods));
+    void testFindGoodsWithName() {
+        log.info("{}",goodsService.findGoodsWithName("小米"));
     }
-    @Test
-    void testSelectGoodsJoinImages() {
-        goodsMapper.selectGoodsJoinImages(10001).forEach(goods -> log.info("{}",goods));
-    }
+
 }

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>商品详情页</title>
-    <link rel="stylesheet" th:href="@{css/index.css}">
-    <link rel="stylesheet" th:href="@{css/goodslist.css}">
-    <link rel="stylesheet" th:href="@{js/bootstrap-3.3.7-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/goodslist.css}">
+    <link rel="stylesheet" th:href="@{/js/bootstrap-3.3.7-dist/css/bootstrap.min.css}">
 </head>
 <body>
 <!-- 网页头部导航 -->
@@ -17,13 +17,13 @@
                 href="#">协议规则</a> | <a href="#">下载app</a> | <a href="#">Select Location</a>
         </div>
         <div class="ntright">
-            <a href="#">登录</a> | <a href="#">注册</a> | <a href="#">消息通知</a>  <div><a th:href="@{./shopcart.html}">购物车 (0)</a></div>
+            <a href="#">登录</a> | <a href="#">注册</a> | <a href="#">消息通知</a>  <div><a th:href="@{/shopcart.html}">购物车 (0)</a></div>
         </div>
     </div>
 </div>
 <header>
     <div id="logo">
-        <img src="images/logo.png" alt="">
+        <img th:src="@{/images/logo.png}" alt="">
     </div>
     <ul id="navigate">
         <li>小米手机</li>
@@ -61,7 +61,7 @@
         <input type="hidden" name="goodsId" id="goodsId">
         <!-- 图片轮播 560x560 -->
         <div id="dtleft">
-            <img th:src="@{images/detail.jpg}" alt="">
+            <img th:src="@{/images/detail.jpg}" alt="">
         </div>
         <!-- 商品介绍 -->
         <div id="dtright">
@@ -138,11 +138,11 @@
     <!-- 维修客户服务 -->
     <div id="footer-service">
         <ul>
-            <li><a href="#"><img th:src="@{images/ss01.png}" alt="">预约维修服务</a></li>
-            <li><a href="#"><img th:src="@{images/ss02.png}" alt="">7天无理由退货</a></li>
-            <li><a href="#"><img th:src="@{images/ss03.png}" alt="">15天免费换货</a></li>
-            <li><a href="#"><img th:src="@{images/ss04.png}" alt="">满150元包邮</a></li>
-            <li><a href="#"><img th:src="@{images/ss05.png}" alt="">520余家售后网点</a></li>
+            <li><a href="#"><img th:src="@{/images/ss01.png}" alt="">预约维修服务</a></li>
+            <li><a href="#"><img th:src="@{/images/ss02.png}" alt="">7天无理由退货</a></li>
+            <li><a href="#"><img th:src="@{/images/ss03.png}" alt="">15天免费换货</a></li>
+            <li><a href="#"><img th:src="@{/images/ss04.png}" alt="">满150元包邮</a></li>
+            <li><a href="#"><img th:src="@{/images/ss05.png}" alt="">520余家售后网点</a></li>
         </ul>
     </div>
     <!-- 快捷连接 -->
@@ -187,7 +187,7 @@
     <!-- 网站信息-->
     <div id="site-info">
         <div class="sileft">
-            <img src="images/logo.png" alt="">
+            <img th:src="@{/images/logo.png}" alt="">
         </div>
         <div class="siright">
             <a href="#">小米商城</a> | <a href="#">MIUI</a> | <a href="#">米家</a> | <a href="#">米聊</a> | <a href="#">多看</a> |
@@ -202,18 +202,19 @@
         </div>
     </div>
 </footer>
-<script th:src="@{js/jquery/jquery-3.4.1.js}"></script>
+<script th:src="@{/js/jquery/jquery-3.4.1.js}"></script>
 <script>
     $(function() {
        // 获取到查询商品的编号
        let $gid = window.location.search.split("=")[1];
        // 发送请求获取商品数据
         $.ajax({
-            url: "/xiaomi/goods/detail/" + $gid,
+            // TODO
+            url: "/goods/detail/" + $gid,
             method: "get",
             success: function(response) {
                 console.log(response);
-                let $goods = response.objectMap.goods;
+                let $goods = response.data;
                 // 更新商品编号
                 $("#goodsId").val($goods.id);
                 // 更新商品名称
@@ -237,7 +238,7 @@
             let $gid = $("#goodsId").val();
             // 加入购物车
             $.ajax({
-                url: "/xiaomi/shopcart/add/" + $gid,
+                url: "/shopcart/add/" + $gid,
                 method: "GET",
                 success: function(response) {
                     if(response.errorCode === "100" ) {

@@ -17,4 +17,18 @@ public interface GoodsService{
      * @return 该类型的商品 {@link Goods}
      */
     List<Goods> findGoodsWithType(GoodsType type);
+
+    /**
+     * 根据 商品ID 查询商品
+     * @param gid 商品ID
+     * @return {@link Goods}
+     */
+    Goods selectOneGoodsByGid(Integer gid);
+
+    /**
+     * 根据名称模糊搜索
+     * @param name 商品名称
+     * @return {@link Goods}
+     */
+    List<Goods> findGoodsWithName(String name);
 }
