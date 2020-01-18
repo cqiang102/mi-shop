@@ -38,4 +38,5 @@ logging:
     cn:
       lacia:
         mi:
-          shop: debug
+          shop:
+            test: debug

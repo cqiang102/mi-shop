@@ -1,6 +1,7 @@
-package cn.lacia.mi.shop.service;
+package cn.lacia.mi.shop.test.service;
 
 import cn.lacia.mi.shop.domain.GoodsType;
+import cn.lacia.mi.shop.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

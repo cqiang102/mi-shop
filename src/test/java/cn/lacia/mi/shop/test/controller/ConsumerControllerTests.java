@@ -1,4 +1,4 @@
-package cn.lacia.mi.shop.controller;
+package cn.lacia.mi.shop.test.controller;
 
 import cn.lacia.mi.shop.utils.MapperUtils;
 import cn.lacia.mi.shop.utils.Result;

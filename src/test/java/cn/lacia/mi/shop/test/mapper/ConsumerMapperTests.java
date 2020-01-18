@@ -1,6 +1,7 @@
-package cn.lacia.mi.shop.mapper;
+package cn.lacia.mi.shop.test.mapper;
 
 import cn.lacia.mi.shop.domain.Consumer;
+import cn.lacia.mi.shop.mapper.ConsumerMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
