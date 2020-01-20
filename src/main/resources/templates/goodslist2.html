@@ -269,7 +269,7 @@
             // 遍历商品列表，将商品添加到页面汇总
             for(let i = 0; i < goodslist.length; i++) {
                 let $boxitem = $("<div>").addClass("goodsboxitem");
-                let $a = $("<a>").attr("href", "/xiaomi/detail.jsp?gid=" + goodslist[i].id);
+                let $a = $("<a>").attr("href", "/detail?gid=" + goodslist[i].id);
                 let $content = $("<div>").addClass("content");
 
                 let $thumb = $("<div>").addClass("thumb");

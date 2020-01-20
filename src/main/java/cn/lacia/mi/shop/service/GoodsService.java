@@ -12,11 +12,18 @@ import java.util.List;
 public interface GoodsService{
 
     /**
-     * 根据商品类型查询商品
+     * 根据二级商品类型 ID 查询商品
      * @param type 商品类型 {@link GoodsType}
      * @return 该类型的商品 {@link Goods}
      */
     List<Goods> findGoodsWithType(GoodsType type);
+
+    /**
+     * 根据一级商品类型 ID 查询商品
+     * @param type 商品类型 {@link GoodsType}
+     * @return 该类型的商品 {@link Goods}
+     */
+    List<Goods> findGoodsWithTopType(GoodsType type);
 
     /**
      * 根据 商品ID 查询商品

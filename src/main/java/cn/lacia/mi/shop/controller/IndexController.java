@@ -43,9 +43,32 @@ public class IndexController {
         return Result.ok(data);
     }
 
+    /**
+     * 根据商品名称搜索
+     * @param name 商品名称
+     * @return
+     */
     @GetMapping("search/{name}")
     public Result search(@PathVariable String name){
         return Result.ok(goodsService.findGoodsWithName(name));
+    }
+
+    /**
+     * 根据商品类型名称搜索
+     * @param level 一级类型或者二级类型
+     * @param goodType 类型 ID
+     * @return
+     */
+    @GetMapping("search/{level}/{goodType}")
+    public Result searchType(@PathVariable Integer level,@PathVariable String goodType){
+        List<Goods> goodsList = null;
+        if (level == 1){
+            goodsList = goodsService.findGoodsWithTopType(GoodsType.builder().id(Integer.parseInt(goodType)).build());
+        }
+        else if (level == 2){
+            goodsList = goodsService.findGoodsWithType(GoodsType.builder().id(Integer.parseInt(goodType)).build());
+        }
+        return  (goodsList == null) ? Result.notOk("类型错误") : Result.ok(goodsList);
     }
 
 }
