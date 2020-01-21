@@ -31,5 +31,5 @@ public interface GoodsCartService{
      * @param consumer
      * @return
      */
-    List<GoodsCart>  findAllGoodsCartWithConsumer(Consumer consumer);
+    List<Goods>   findAllGoodsCartWithConsumer(Consumer consumer);
 }
